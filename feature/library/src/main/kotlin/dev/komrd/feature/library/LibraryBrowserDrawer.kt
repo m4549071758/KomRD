@@ -1,6 +1,5 @@
 package dev.komrd.feature.library
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,17 +41,17 @@ fun LibraryBrowserDrawer(
     onAddServer: () -> Unit,
     onSelectServer: ((serverId: String) -> Unit)? = null,
 ) {
-    Column(modifier = Modifier.padding(12.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 16.dp)) {
         Text(
             text = stringResource(R.string.library_drawer_title),
-            style = KomrdTheme.typography.h2,
+            style = KomrdTheme.typography.h3,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
         )
         HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
         Spacer(modifier = Modifier.height(8.dp))
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             state.serverGroups.forEach { group ->
                 serverGroupItems(
@@ -113,9 +112,9 @@ private fun androidx.compose.foundation.lazy.LazyListScope.readListItems(
 private fun SectionHeader(label: String) {
     Text(
         text = label,
-        style = KomrdTheme.typography.label1,
+        style = KomrdTheme.typography.label2,
         color = KomrdTheme.colors.textSecondary,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp),
+        modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 4.dp),
     )
 }
 
@@ -130,14 +129,12 @@ private fun androidx.compose.foundation.lazy.LazyListScope.serverGroupItems(
     onSelectServer: ((serverId: String) -> Unit)?,
 ) {
     item(key = "server-" + group.server.id) {
-        Text(
-            text = group.server.name,
-            style = KomrdTheme.typography.label1,
-            color = KomrdTheme.colors.textSecondary,
-            modifier =
-                Modifier
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
-                    .clickable(enabled = onSelectServer != null) { onSelectServer?.invoke(group.server.id) },
+        val serverSelectable = onSelectServer != null
+        NavigationDrawerItem(
+            label = { Text(group.server.name) },
+            selected = false,
+            onClick = { if (serverSelectable) onSelectServer?.invoke(group.server.id) },
+            modifier = Modifier.padding(horizontal = 8.dp),
         )
     }
     if (group.libraries.isNotEmpty()) {
