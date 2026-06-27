@@ -48,6 +48,7 @@ import dev.komrd.core.model.PrefetchCacheSummary
 import dev.komrd.core.model.ReadingDirection
 import dev.komrd.core.model.SpreadMode
 
+@Suppress("LongMethod")
 @Composable
 fun SettingsRoute(
     onOpenServers: () -> Unit = {},
@@ -55,8 +56,10 @@ fun SettingsRoute(
 ) {
     val readingDirection by viewModel.readingDirection.collectAsStateWithLifecycle()
     val spreadMode by viewModel.spreadMode.collectAsStateWithLifecycle()
+    val currentLocale by viewModel.currentLocale.collectAsStateWithLifecycle()
     var showDirectionDialog by remember { mutableStateOf(false) }
     var showSpreadDialog by remember { mutableStateOf(false) }
+    var showLanguageDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = { SettingsTopBar() },
@@ -75,6 +78,7 @@ fun SettingsRoute(
                 onOpenServers = onOpenServers,
                 onShowDirectionDialog = { showDirectionDialog = true },
                 onShowSpreadDialog = { showSpreadDialog = true },
+                onShowLanguageDialog = { showLanguageDialog = true },
                 viewModel = viewModel,
             )
         }
@@ -87,6 +91,21 @@ fun SettingsRoute(
             onSelect = { direction ->
                 viewModel.setReadingDirection(direction)
                 showDirectionDialog = false
+            },
+        )
+    }
+
+    if (showLanguageDialog) {
+        val activity = LocalContext.current as? android.app.Activity
+        LanguageDialog(
+            current = currentLocale,
+            onDismiss = { showLanguageDialog = false },
+            onSelect = { tag ->
+                viewModel.setAppLocale(tag)
+                showLanguageDialog = false
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    activity?.recreate()
+                }
             },
         )
     }
@@ -129,8 +148,10 @@ private fun SettingsTopItems(
     onOpenServers: () -> Unit,
     onShowDirectionDialog: () -> Unit,
     onShowSpreadDialog: () -> Unit,
+    onShowLanguageDialog: () -> Unit,
     viewModel: SettingsViewModel,
 ) {
+    val currentLocale by viewModel.currentLocale.collectAsStateWithLifecycle()
     SettingsSectionHeader(stringResource(R.string.settings_section_general))
     Card(modifier = Modifier.fillMaxWidth()) {
         ListItem(
@@ -149,6 +170,12 @@ private fun SettingsTopItems(
             headlineContent = { Text(stringResource(R.string.settings_spread_mode_title)) },
             supportingContent = { Text(spreadModeLabel(spreadMode)) },
             modifier = Modifier.clickable(onClick = onShowSpreadDialog),
+        )
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+        ListItem(
+            headlineContent = { Text(stringResource(R.string.settings_language_title)) },
+            supportingContent = { Text(localeLabel(currentLocale)) },
+            modifier = Modifier.clickable(onClick = onShowLanguageDialog),
         )
     }
     PrefetchSection(viewModel = viewModel)
@@ -246,6 +273,32 @@ private val SelectionDialogItemPadding =
     dev.komrd.core.designsystem.components.ListItemPadding(
         horizontal = 0.dp,
         vertical = 4.dp,
+    )
+
+@Composable
+private fun LanguageDialog(
+    current: String,
+    onDismiss: () -> Unit,
+    onSelect: (String) -> Unit,
+) {
+    SelectionDialog(
+        title = stringResource(R.string.settings_language_dialog_title),
+        options = listOf("system", "en", "ja"),
+        current = current,
+        labelOf = { localeLabel(it) },
+        onDismiss = onDismiss,
+        onSelect = onSelect,
+    )
+}
+
+@Composable
+private fun localeLabel(tag: String): String =
+    stringResource(
+        when (tag) {
+            "en" -> R.string.settings_language_en
+            "ja" -> R.string.settings_language_ja
+            else -> R.string.settings_language_system
+        },
     )
 
 @Composable
