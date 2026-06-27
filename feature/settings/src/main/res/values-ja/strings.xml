@@ -61,4 +61,11 @@
 
     <!-- バックグラウンド -->
     <string name="settings_section_background">バックグラウンド</string>
+
+    <!-- 言語 -->
+    <string name="settings_language_title">言語</string>
+    <string name="settings_language_dialog_title">言語</string>
+    <string name="settings_language_system">システムの既定</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_ja">日本語</string>
 </resources>

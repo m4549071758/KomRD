@@ -1,9 +1,11 @@
 package dev.komrd.feature.settings
 
 import android.Manifest
+import android.app.LocaleManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.LocaleList
 import android.os.PowerManager
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
@@ -149,6 +151,40 @@ class SettingsViewModel
             return pm.isIgnoringBatteryOptimizations(context.packageName)
         }
 
+        // ── 言語 ──
+
+        private val _currentLocale = MutableStateFlow(currentLocaleTag())
+        val currentLocale: StateFlow<String> = _currentLocale.asStateFlow()
+
+        fun setAppLocale(tag: String) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val localeManager = context.getSystemService(LocaleManager::class.java)
+                localeManager.applicationLocales =
+                    if (tag == LOCALE_SYSTEM) {
+                        LocaleList.getEmptyLocaleList()
+                    } else {
+                        LocaleList.forLanguageTags(tag)
+                    }
+            } else {
+                context
+                    .getSharedPreferences(LOCALE_PREFS, Context.MODE_PRIVATE)
+                    .edit()
+                    .putString(LOCALE_KEY, tag)
+                    .apply()
+            }
+            _currentLocale.value = tag
+        }
+
+        private fun currentLocaleTag(): String =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val locales = context.getSystemService(LocaleManager::class.java).applicationLocales
+                if (locales.isEmpty) LOCALE_SYSTEM else locales[0]?.language ?: LOCALE_SYSTEM
+            } else {
+                context
+                    .getSharedPreferences(LOCALE_PREFS, Context.MODE_PRIVATE)
+                    .getString(LOCALE_KEY, LOCALE_SYSTEM) ?: LOCALE_SYSTEM
+            }
+
         fun setReadingDirection(direction: ReadingDirection) {
             viewModelScope.launch { readingDirectionStore.set(direction) }
         }
@@ -179,5 +215,11 @@ class SettingsViewModel
 
         fun setPrefetchAllowOnMobile(allow: Boolean) {
             viewModelScope.launch { prefetchSettingsStore.setAllowOnMobile(allow) }
+        }
+
+        companion object {
+            const val LOCALE_PREFS = "locale"
+            const val LOCALE_KEY = "app_locale"
+            const val LOCALE_SYSTEM = "system"
         }
     }
