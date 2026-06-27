@@ -1,0 +1,39 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local config / secrets
+local.properties
+*.keystore
+*.jks
+keystore.properties
+signing.properties
+
+# Android build artifacts
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE - Android Studio / IntelliJ
+*.iml
+.idea/
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Git worktrees
+.worktrees/
+
+# Claude Code local session files
+.claude/

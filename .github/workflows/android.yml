@@ -1,0 +1,41 @@
+name: Android CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+# PRに連投したら古いランを自動キャンセル(runner節約)。mainのpushはキャンセルせずキャッシュ保存を完走させる
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # ubuntu-latestはandroid-36/build-tools 36.0.0/platform-tools/cmdline-toolsを
+      # プリインストール済み(ANDROID_HOME=/usr/local/lib/android/sdk)。SDKセットアップ・キャッシュ不要。
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Check, test and build
+        # ktlint/detektは全ソース対象。ユニットテストはdebugバリアントのみ(PR gateで十分・releaseのKAPT/compile/testは省いて-40~60s)。
+        # releaseビルド検証はmain pushまたはリリースジョブで担保。
+        run: ./gradlew ktlintCheck detekt testDebugUnitTest assembleDebug

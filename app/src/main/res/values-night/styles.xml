@@ -1,0 +1,4 @@
+<resources>
+    <!-- 起動ウィンドウ用テーマ(夜)。暗い背景で起動直後の白チラツキを防ぐ（レビューL26）。 -->
+    <style name="Theme.KomRD" parent="android:style/Theme.Material.NoActionBar" />
+</resources>

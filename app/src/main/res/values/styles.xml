@@ -1,0 +1,5 @@
+<resources>
+    <!-- 起動ウィンドウ用テーマ(昼)。夜は values-night/styles.xml の暗テーマへ自動切替し、
+         ダーク時の起動直後の白背景チラツキを防ぐ（レビューL26）。本体UIは Compose の KomrdTheme。 -->
+    <style name="Theme.KomRD" parent="android:style/Theme.Material.Light.NoActionBar" />
+</resources>

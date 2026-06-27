@@ -1,0 +1,8 @@
+<resources>
+    <string name="reader_epub_nav_back">Back</string>
+    <string name="reader_epub_loading">Loading…</string>
+    <string name="reader_epub_retry">Retry</string>
+    <string name="reader_epub_chapter_previous">Previous chapter</string>
+    <string name="reader_epub_prefetch_progress">Prefetching: %1$d/%2$d</string>
+    <string name="reader_epub_chapter_next">Next chapter</string>
+</resources>

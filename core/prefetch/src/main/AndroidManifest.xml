@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ConnectivityManager.registerDefaultNetworkCallback に必要（M3-04 / DESIGN §5）。
+         app の AndroidManifest にも宣言済（マージ重複・ライブラリ自己完結のため本モジュールでも宣言）。 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>

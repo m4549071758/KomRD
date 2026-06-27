@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 先読み取得を表す下向き矢印（通知スモールアイコンは単色シルエット・白） -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,3v10.55l-3.3,-3.3 -1.4,1.42 5.7,5.7 5.7,-5.7 -1.42,-1.42 -3.28,3.3V3z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M5,19h14v2H5z" />
+</vector>

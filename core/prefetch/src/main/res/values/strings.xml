@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prefetch_channel_name">Prefetch Progress</string>
+    <string name="prefetch_channel_desc">Shows background prefetch status</string>
+    <string name="prefetch_notif_title">Prefetching</string>
+    <string name="prefetch_notif_progress">%1$d remaining / %2$d total</string>
+</resources>

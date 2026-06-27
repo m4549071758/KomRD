@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- M4 設定画面 導線 -->
+    <string name="settings_notifications_title">通知の許可</string>
+    <string name="settings_notifications_supporting">バックグラウンド中の先読み進捗を通知で表示します</string>
+    <string name="settings_battery_optimization_title">電池最適化の除外</string>
+    <string name="settings_battery_optimization_supporting">先読みがバックグラウンドで途切れないよう、電池最適化の対象外にします</string>
+    <string name="settings_battery_optimization_rationale">先読みをバックグラウンドで継続するため、KomRDを電池最適化の対象外に設定します。よろしいですか？</string>
+    <string name="settings_battery_optimization_granted">除外済み</string>
+    <string name="settings_battery_optimization_not_granted">未除外</string>
+    <string name="settings_notifications_granted">許可済み</string>
+    <string name="settings_notifications_not_granted">未許可</string>
+    <string name="common_cancel">キャンセル</string>
+    <string name="common_continue">続行</string>
+
+    <!-- 一般 -->
+    <string name="settings_title">設定</string>
+    <string name="settings_section_general">一般</string>
+    <string name="settings_server_management_title">サーバ管理</string>
+    <string name="settings_server_management_supporting">Komgaサーバの登録・接続テスト・TLS信頼</string>
+    <string name="settings_reading_direction_title">読書方向の既定</string>
+    <string name="settings_reading_direction_dialog_title">読書方向の既定</string>
+    <string name="reading_direction_left_to_right">左から右（LTR）</string>
+    <string name="reading_direction_right_to_left">右から左（RTL）</string>
+    <string name="reading_direction_vertical">上から下（縦スクロール）</string>
+    <string name="reading_direction_webtoon">Webtoon（連続縦スクロール）</string>
+    <string name="reading_direction_onboarding_title">読書方向の既定を選択</string>
+    <string name="reading_direction_onboarding_description">初回起動時の既定を選んでください（あとで設定で変更できます）。</string>
+    <string name="reading_direction_onboarding_skip_left_to_right">スキップ（左から右）</string>
+    <string name="settings_spread_mode_title">見開き</string>
+    <string name="settings_spread_mode_dialog_title">見開き</string>
+    <string name="spread_mode_always">常に見開き</string>
+    <string name="spread_mode_landscape_only">横画面時のみ</string>
+    <string name="spread_mode_off">オフ（1ページ表示）</string>
+
+    <!-- 先読み -->
+    <string name="settings_section_prefetch">先読み</string>
+    <string name="prefetch_title">先読み</string>
+    <string name="prefetch_supporting">読書中にページを自動取得</string>
+    <string name="prefetch_next_books_title">先読みブック数</string>
+    <string name="prefetch_next_books_dialog_title">先読みブック数</string>
+    <string name="prefetch_next_books_current_only">現在のBookのみ</string>
+    <string name="prefetch_next_books_count">次%d冊</string>
+    <string name="prefetch_parallelism_title">並列数</string>
+    <string name="prefetch_parallelism_dialog_title">並列数</string>
+    <string name="prefetch_retention_days_title">保持日数</string>
+    <string name="prefetch_retention_days_dialog_title">保持日数</string>
+    <string name="prefetch_retention_days_count">%d日</string>
+    <string name="prefetch_cache_size_title">キャッシュ容量</string>
+    <string name="prefetch_cache_size_dialog_title">キャッシュ容量</string>
+    <string name="prefetch_mobile_data_title">モバイルデータで先読み</string>
+    <string name="prefetch_mobile_data_supporting">Wi-Fi以外でも先読みを実行</string>
+
+    <!-- キャッシュ -->
+    <string name="settings_section_cache">キャッシュ</string>
+    <string name="cache_empty_title">キャッシュはありません</string>
+    <string name="cache_empty_supporting">先読みで保存されたデータがここに表示されます</string>
+    <string name="cache_item_pages_prefix">ページ: %s</string>
+    <string name="cache_item_entries_suffix">%1$dエントリ / %2$s</string>
+    <string name="cache_delete_button">削除</string>
+
+    <!-- バックグラウンド -->
+    <string name="settings_section_background">バックグラウンド</string>
+</resources>

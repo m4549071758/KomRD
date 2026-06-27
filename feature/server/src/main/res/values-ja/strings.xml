@@ -1,0 +1,63 @@
+<resources>
+    <!-- i18n基盤（レビューM7）。Composable内の文字列はここへ集約し stringResource() で参照する。
+         他画面/他モジュールも同パターンで順次移行する。ViewModel層の検証メッセージは
+         「state に resId を持たせ Composable で解決」する別パターンが必要なため本コミットの対象外。 -->
+    <string name="server_form_title_add">サーバ追加</string>
+    <string name="server_form_title_edit">サーバ編集</string>
+    <string name="server_form_label_name">名前</string>
+    <string name="server_form_label_base_url">ベースURL (http(s)://...)</string>
+    <string name="server_form_label_auth">認証方式</string>
+    <string name="server_form_auth_api_key">API Key</string>
+    <string name="server_form_auth_basic">Basic</string>
+    <string name="server_form_label_api_key">APIキー</string>
+    <string name="server_form_label_username">ユーザ名</string>
+    <string name="server_form_label_password">パスワード</string>
+    <string name="action_cancel">キャンセル</string>
+    <string name="action_save">保存</string>
+    <string name="connection_test_title">接続テスト</string>
+    <string name="connection_test_status_testing">接続中…</string>
+    <string name="connection_test_status_success">接続成功%s</string>
+    <string name="connection_test_dismiss_button">閉じる</string>
+    <string name="connection_test_error_unauthorized">認証失敗（401）。APIキーまたはBasic認証情報を確認してください。</string>
+    <string name="connection_test_error_untrusted_certificate">TLS証明書が信頼できません。Subject: %s</string>
+    <string name="connection_test_unknown_certificate_subject">不明</string>
+    <string name="connection_test_error_network">ネットワークエラー: %s</string>
+    <string name="connection_test_error_http">HTTPエラー: %s</string>
+    <string name="connection_test_error_serialization">レスポンスの解析に失敗しました。</string>
+    <string name="connection_test_error_unknown">不明なエラー: %s</string>
+    <string name="server_back_button">戻る</string>
+    <string name="server_screen_title">サーバ</string>
+    <string name="server_add_fab">サーバ追加</string>
+    <string name="server_active_suffix"> (有効)</string>
+    <string name="server_activate_button">有効にする</string>
+    <string name="server_connection_test_button">接続テスト</string>
+    <string name="server_menu_button">メニュー</string>
+    <string name="server_edit_menu_item">編集</string>
+    <string name="server_settings_menu_item">サーバ設定</string>
+    <string name="server_delete_menu_item">削除</string>
+    <string name="server_settings_read_only_message">読取のみ: 管理者権限が必要です</string>
+    <string name="server_settings_user_info">ユーザ情報</string>
+    <string name="server_settings_role_format">ロール: %s</string>
+    <string name="server_settings_share_all_libraries">全ライブラリを共有</string>
+    <string name="server_settings_shared_libraries_format">共有ライブラリ: %s</string>
+    <string name="server_settings_shared_libraries_none">なし</string>
+    <string name="server_settings_age_restriction_format">年齢制限: %s %d歳以上</string>
+    <string name="server_settings_delete_empty_collections">空コレクション削除</string>
+    <string name="server_settings_delete_empty_read_lists">空Read List削除</string>
+    <string name="server_settings_task_pool_size">タスクプールサイズ</string>
+    <string name="server_settings_remember_me_duration_days">Remember Me有効日数</string>
+    <string name="server_settings_renew_remember_me_key">Remember Meキー再生成</string>
+    <string name="server_settings_server_port">サーバポート</string>
+    <string name="server_settings_context_path">コンテキストパス</string>
+    <string name="server_settings_thumbnail_size">サムネイルサイズ</string>
+    <string name="server_settings_thumbnail_size_unset">（未設定）</string>
+    <string name="server_settings_thumbnail_size_select">選択</string>
+    <string name="server_settings_kobo_port">Koboポート</string>
+    <string name="server_settings_kobo_proxy">Koboプロキシ</string>
+    <string name="trust_dialog_title_mismatch">指紋不一致: 再ピン留め</string>
+    <string name="trust_dialog_title">TLS証明書の信頼</string>
+    <string name="trust_dialog_mismatch_message">既存のピン留め指紋と異なります。本当に差し替えますか？</string>
+    <string name="trust_dialog_validity_period">有効期間: %1$s - %2$s</string>
+    <string name="trust_dialog_confirm_button">信頼してピン留め</string>
+    <string name="trust_dialog_dismiss_button">キャンセル</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_menu_content_description">メニュー</string>
+    <string name="home_title">ホーム</string>
+    <string name="home_library_button">ライブラリ</string>
+    <string name="home_add_server_button">サーバを追加</string>
+    <string name="home_continue_reading_header">続けて読む</string>
+    <string name="home_recently_read_header">最近読んだ本</string>
+</resources>

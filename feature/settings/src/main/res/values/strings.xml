@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_general">General</string>
+    <string name="settings_server_management_title">Server management</string>
+    <string name="settings_server_management_supporting">Register Komga servers, run connection tests, and manage TLS trust</string>
+    <string name="settings_reading_direction_title">Default reading direction</string>
+    <string name="settings_reading_direction_dialog_title">Default reading direction</string>
+    <string name="reading_direction_left_to_right">Left to right (LTR)</string>
+    <string name="reading_direction_right_to_left">Right to left (RTL)</string>
+    <string name="reading_direction_vertical">Top to bottom (vertical scroll)</string>
+    <string name="reading_direction_webtoon">Webtoon (continuous vertical scroll)</string>
+    <string name="reading_direction_onboarding_title">Choose default reading direction</string>
+    <string name="reading_direction_onboarding_description">Choose the default for first launch (can be changed in settings later).</string>
+    <string name="reading_direction_onboarding_skip_left_to_right">Skip (left to right)</string>
+    <string name="settings_spread_mode_title">Spread</string>
+    <string name="settings_spread_mode_dialog_title">Spread</string>
+    <string name="spread_mode_always">Always spread</string>
+    <string name="spread_mode_landscape_only">Landscape only</string>
+    <string name="spread_mode_off">Off (single page)</string>
+
+    <!-- Prefetch -->
+    <string name="settings_section_prefetch">Prefetch</string>
+    <string name="prefetch_title">Prefetch</string>
+    <string name="prefetch_supporting">Automatically fetch pages while reading</string>
+    <string name="prefetch_next_books_title">Prefetch book count</string>
+    <string name="prefetch_next_books_dialog_title">Prefetch book count</string>
+    <string name="prefetch_next_books_current_only">Current book only</string>
+    <string name="prefetch_next_books_count">Next %d books</string>
+    <string name="prefetch_parallelism_title">Parallelism</string>
+    <string name="prefetch_parallelism_dialog_title">Parallelism</string>
+    <string name="prefetch_retention_days_title">Retention days</string>
+    <string name="prefetch_retention_days_dialog_title">Retention days</string>
+    <string name="prefetch_retention_days_count">%d days</string>
+    <string name="prefetch_cache_size_title">Cache size</string>
+    <string name="prefetch_cache_size_dialog_title">Cache size</string>
+    <string name="prefetch_mobile_data_title">Prefetch on mobile data</string>
+    <string name="prefetch_mobile_data_supporting">Run prefetch even when not on Wi-Fi</string>
+
+    <!-- Cache -->
+    <string name="settings_section_cache">Cache</string>
+    <string name="cache_empty_title">No cache</string>
+    <string name="cache_empty_supporting">Data saved by prefetch appears here</string>
+    <string name="cache_item_pages_prefix">Pages: %s</string>
+    <string name="cache_item_entries_suffix">%1$d entries / %2$s</string>
+    <string name="cache_delete_button">Delete</string>
+
+    <!-- Background -->
+    <string name="settings_section_background">Background</string>
+
+    <!-- Notifications / Battery -->
+    <string name="settings_notifications_title">Notifications</string>
+    <string name="settings_notifications_supporting">Show prefetch progress in the background</string>
+    <string name="settings_battery_optimization_title">Battery Optimization Exclusion</string>
+    <string name="settings_battery_optimization_supporting">Keep prefetch running in the background</string>
+    <string name="settings_battery_optimization_rationale">To keep prefetch running in the background, set KomRD to be excluded from battery optimization. Continue?</string>
+    <string name="settings_battery_optimization_granted">Excluded</string>
+    <string name="settings_battery_optimization_not_granted">Not Excluded</string>
+    <string name="settings_notifications_granted">Allowed</string>
+    <string name="settings_notifications_not_granted">Not Allowed</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_continue">Continue</string>
+</resources>

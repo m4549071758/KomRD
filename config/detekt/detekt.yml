@@ -1,0 +1,26 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+
+style:
+  MagicNumber:
+    active: false
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated:
+      - Preview
+
+complexity:
+  LongParameterList:
+    active: true
+    functionThreshold: 8
+    constructorThreshold: 8
+  TooManyFunctions:
+    thresholdInFiles: 12
+
+naming:
+  FunctionNaming:
+    ignoreAnnotated:
+      - Composable

@@ -1,0 +1,37 @@
+<resources>
+    <string name="reader_navigate_back_content_description">戻る</string>
+
+    <string name="reader_spread_mode_button_format">見開き: %1$s</string>
+    <string name="reader_reading_direction_button_format">方向: %1$s</string>
+
+    <string name="reader_bookmark_remove_button">しおり解除</string>
+    <string name="reader_bookmark_add_button">しおり追加</string>
+    <string name="reader_bookmark_list_button">しおり一覧</string>
+
+    <string name="reader_prefetch_status_idle">待機中</string>
+    <string name="reader_prefetch_status_format">先読み: %1$s</string>
+
+    <string name="reader_reading_direction_dialog_title">読書方向の既定</string>
+    <string name="reader_dialog_close_button">閉じる</string>
+    <string name="reader_spread_mode_dialog_title">見開き</string>
+    <string name="reader_reading_direction_ltr">左から右（LTR）</string>
+    <string name="reader_reading_direction_rtl">右から左（RTL）</string>
+    <string name="reader_reading_direction_vertical">上から下（縦スクロール）</string>
+    <string name="reader_reading_direction_webtoon">Webtoon（連続縦スクロール）</string>
+    <string name="reader_spread_mode_always">常に見開き</string>
+    <string name="reader_spread_mode_landscape_only">横画面時のみ</string>
+    <string name="reader_spread_mode_off">オフ（1ページ表示）</string>
+
+    <string name="reader_bookmark_list_dialog_title">しおり一覧</string>
+    <string name="reader_bookmark_list_empty">しおりはありません</string>
+    <string name="reader_bookmark_jump_to_page_button_format">%1$d ページへ</string>
+    <string name="reader_selected_item_format">✓ %1$s</string>
+
+    <string name="reader_page_retry_button">再試行</string>
+    <string name="reader_error_unauthorized">認証に失敗しました</string>
+    <string name="reader_error_untrusted_certificate">サーバ証明書が信頼できません</string>
+    <string name="reader_error_network">ネットワークに接続できません</string>
+    <string name="reader_error_generic">読み込みに失敗しました</string>
+    <string name="reader_error_retry_button">再試行</string>
+    <string name="reader_prefetch_progress">先読み中: %1$d/%2$d</string>
+</resources>

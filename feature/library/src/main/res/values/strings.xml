@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Book detail -->
+    <string name="book_detail_back_content_description">Back</string>
+    <string name="book_detail_format_label">Format</string>
+    <string name="book_detail_pages_suffix">pages</string>
+    <string name="book_detail_read_button">Read</string>
+
+    <!-- Collection detail -->
+    <string name="cd_back">Back</string>
+    <string name="collection_detail_default_title">Collection</string>
+
+    <!-- Library browser drawer -->
+    <string name="library_drawer_title">Library</string>
+    <string name="server_add_button">Add server</string>
+    <string name="library_section_header">Libraries</string>
+    <string name="collection_section_header">Collections</string>
+    <string name="readlist_section_header">Reading lists</string>
+    <string name="library_load_error">Failed to load library</string>
+
+    <!-- Library screen -->
+    <string name="home_menu_content_description">Menu</string>
+    <string name="library_title">Library</string>
+    <string name="library_sort_button">Sort</string>
+    <string name="library_filter_button">Filter</string>
+    <string name="library_load_error_message">Failed to load library</string>
+    <string name="retry_button">Retry</string>
+    <string name="library_empty_message">No libraries</string>
+    <string name="library_sort_dialog_title">Sort</string>
+    <string name="library_filter_dialog_title">Filter by reading status</string>
+    <string name="no_server_message">No servers registered</string>
+    <string name="add_server_button">Add server</string>
+
+    <!-- Sort / filter -->
+    <string name="series_sort_title_asc">Title ascending</string>
+    <string name="series_sort_title_desc">Title descending</string>
+    <string name="series_sort_date_added_asc">Date added ascending</string>
+    <string name="series_sort_date_added_desc">Date added descending</string>
+    <string name="series_sort_date_updated_asc">Date updated ascending</string>
+    <string name="series_sort_date_updated_desc">Date updated descending</string>
+    <string name="read_status_all">All</string>
+    <string name="read_status_unread">Unread</string>
+    <string name="read_status_in_progress">Reading</string>
+    <string name="read_status_read">Read</string>
+
+    <!-- Reading list detail -->
+    <string name="readlist_back_button_content_description">Back</string>
+    <string name="readlist_default_title">Reading list</string>
+    <string name="readlist_empty_message">No books</string>
+
+    <!-- Series detail -->
+    <string name="series_detail_back_button_content_description">Back</string>
+    <string name="series_detail_fallback_title">Series</string>
+    <string name="series_detail_empty_message">No books</string>
+
+    <!-- Thumbnail grid -->
+    <string name="thumbnail_grid_empty_message">No items</string>
+    <string name="thumbnail_grid_load_error">Failed to load</string>
+    <string name="thumbnail_grid_retry_button">Retry</string>
+    <string name="thumbnail_grid_reconnecting">Reconnecting...</string>
+
+</resources>

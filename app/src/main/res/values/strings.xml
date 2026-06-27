@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">KomRD</string>
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_search">Search</string>
+    <string name="bottom_nav_settings">Settings</string>
+    <string name="search_title">Search</string>
+    <string name="search_add_server">Add Server</string>
+    <string name="search_select_server">Select Server</string>
+    <string name="search_m5_placeholder">Search will be implemented in M5</string>
+    <string name="search_query_placeholder">Search by title or author</string>
+    <string name="search_all_servers_label">Search all servers</string>
+    <string name="search_tab_series">Series</string>
+    <string name="search_tab_books">Books</string>
+    <string name="search_empty_prompt">Enter a search keyword</string>
+    <string name="search_empty_series">No series found</string>
+    <string name="search_empty_books">No books found</string>
+    <string name="search_filter_all_libraries">All libraries</string>
+</resources>

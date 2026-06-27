@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">KomRD</string>
+    <string name="bottom_nav_home">ホーム</string>
+    <string name="bottom_nav_search">検索</string>
+    <string name="bottom_nav_settings">設定</string>
+    <string name="search_title">検索</string>
+    <string name="search_add_server">サーバを追加</string>
+    <string name="search_select_server">サーバ選択</string>
+    <string name="search_m5_placeholder">検索はM5で実装予定です</string>
+    <string name="search_query_placeholder">タイトル・著者で検索</string>
+    <string name="search_all_servers_label">全サーバで検索</string>
+    <string name="search_tab_series">シリーズ</string>
+    <string name="search_tab_books">ブック</string>
+    <string name="search_empty_prompt">検索キーワードを入力してください</string>
+    <string name="search_empty_series">シリーズがありません</string>
+    <string name="search_empty_books">ブックがありません</string>
+    <string name="search_filter_all_libraries">すべてのライブラリ</string>
+</resources>

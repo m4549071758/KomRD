@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_menu_content_description">Menu</string>
+    <string name="home_title">Home</string>
+    <string name="home_library_button">Library</string>
+    <string name="home_add_server_button">Add server</string>
+    <string name="home_continue_reading_header">Continue reading</string>
+    <string name="home_recently_read_header">Recently read</string>
+</resources>

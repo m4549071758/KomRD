@@ -1,0 +1,8 @@
+<resources>
+    <string name="reader_epub_nav_back">戻る</string>
+    <string name="reader_epub_loading">読み込み中…</string>
+    <string name="reader_epub_retry">再試行</string>
+    <string name="reader_epub_chapter_previous">前の章</string>
+    <string name="reader_epub_prefetch_progress">先読み中: %1$d/%2$d</string>
+    <string name="reader_epub_chapter_next">次の章</string>
+</resources>

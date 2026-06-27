@@ -1,0 +1,37 @@
+<resources>
+    <string name="reader_navigate_back_content_description">Back</string>
+
+    <string name="reader_spread_mode_button_format">Spread: %1$s</string>
+    <string name="reader_reading_direction_button_format">Direction: %1$s</string>
+
+    <string name="reader_bookmark_remove_button">Remove bookmark</string>
+    <string name="reader_bookmark_add_button">Add bookmark</string>
+    <string name="reader_bookmark_list_button">Bookmarks</string>
+
+    <string name="reader_prefetch_status_idle">Idle</string>
+    <string name="reader_prefetch_status_format">Prefetch: %1$s</string>
+
+    <string name="reader_reading_direction_dialog_title">Default reading direction</string>
+    <string name="reader_dialog_close_button">Close</string>
+    <string name="reader_spread_mode_dialog_title">Spread</string>
+    <string name="reader_reading_direction_ltr">Left to right (LTR)</string>
+    <string name="reader_reading_direction_rtl">Right to left (RTL)</string>
+    <string name="reader_reading_direction_vertical">Top to bottom (vertical scroll)</string>
+    <string name="reader_reading_direction_webtoon">Webtoon (continuous vertical scroll)</string>
+    <string name="reader_spread_mode_always">Always spread</string>
+    <string name="reader_spread_mode_landscape_only">Landscape only</string>
+    <string name="reader_spread_mode_off">Off (single page)</string>
+
+    <string name="reader_bookmark_list_dialog_title">Bookmarks</string>
+    <string name="reader_bookmark_list_empty">No bookmarks</string>
+    <string name="reader_bookmark_jump_to_page_button_format">Go to page %1$d</string>
+    <string name="reader_selected_item_format">✓ %1$s</string>
+
+    <string name="reader_page_retry_button">Retry</string>
+    <string name="reader_error_unauthorized">Authentication failed</string>
+    <string name="reader_error_untrusted_certificate">Server certificate is not trusted</string>
+    <string name="reader_error_network">Cannot connect to network</string>
+    <string name="reader_error_generic">Failed to load</string>
+    <string name="reader_error_retry_button">Retry</string>
+    <string name="reader_prefetch_progress">Prefetching: %1$d/%2$d</string>
+</resources>
