@@ -42,7 +42,7 @@ import dev.komrd.core.designsystem.components.RadioButton
 import dev.komrd.core.designsystem.components.Scaffold
 import dev.komrd.core.designsystem.components.Switch
 import dev.komrd.core.designsystem.components.Text
-import dev.komrd.core.designsystem.components.card.Card
+import dev.komrd.core.designsystem.components.card.ElevatedCard
 import dev.komrd.core.designsystem.components.topbar.TopBar
 import dev.komrd.core.model.PrefetchCacheSummary
 import dev.komrd.core.model.ReadingDirection
@@ -153,7 +153,7 @@ private fun SettingsTopItems(
 ) {
     val currentLocale by viewModel.currentLocale.collectAsStateWithLifecycle()
     SettingsSectionHeader(stringResource(R.string.settings_section_general))
-    Card(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         ListItem(
             headlineContent = { Text(stringResource(R.string.settings_server_management_title)) },
             supportingContent = { Text(stringResource(R.string.settings_server_management_supporting)) },
@@ -343,7 +343,7 @@ private fun PrefetchSection(viewModel: SettingsViewModel) {
     var showMaxBytesDialog by remember { mutableStateOf(false) }
 
     SettingsSectionHeader(stringResource(R.string.settings_section_prefetch))
-    Card(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         ListItem(
             headlineContent = { Text(stringResource(R.string.prefetch_title)) },
             supportingContent = { Text(stringResource(R.string.prefetch_supporting)) },
@@ -459,7 +459,7 @@ private fun CacheSection(viewModel: SettingsViewModel) {
     val summaries by viewModel.cacheSummaries.collectAsStateWithLifecycle()
 
     SettingsSectionHeader(stringResource(R.string.settings_section_cache))
-    Card(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         if (summaries.isEmpty()) {
             ListItem(
                 headlineContent = { Text(stringResource(R.string.cache_empty_title)) },
@@ -539,7 +539,7 @@ private fun BackgroundSection(viewModel: SettingsViewModel) {
     var showBatteryRationale by remember { mutableStateOf(false) }
 
     SettingsSectionHeader(stringResource(R.string.settings_section_background))
-    Card(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         BackgroundListItems(
             notificationsGranted = notificationsGranted,
             batteryIgnored = batteryIgnored,

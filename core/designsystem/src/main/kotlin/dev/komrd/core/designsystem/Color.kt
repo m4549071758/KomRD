@@ -83,7 +83,7 @@ data class Colors(
 
 internal val LightColors =
     Colors(
-        primary = Black,
+        primary = Blue900,
         onPrimary = White,
         secondary = Gray400,
         onSecondary = Black,
@@ -112,8 +112,8 @@ internal val LightColors =
 
 internal val DarkColors =
     Colors(
-        primary = White,
-        onPrimary = Black,
+        primary = Blue700,
+        onPrimary = White,
         secondary = Gray400,
         onSecondary = White,
         tertiary = Blue300,

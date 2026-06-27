@@ -1,6 +1,5 @@
 package dev.komrd.search
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
@@ -34,9 +32,9 @@ import dev.komrd.core.designsystem.components.DropdownMenu
 import dev.komrd.core.designsystem.components.DropdownMenuItem
 import dev.komrd.core.designsystem.components.Icon
 import dev.komrd.core.designsystem.components.Scaffold
-import dev.komrd.core.designsystem.components.Surface
 import dev.komrd.core.designsystem.components.Switch
 import dev.komrd.core.designsystem.components.Text
+import dev.komrd.core.designsystem.components.card.OutlinedCard
 import dev.komrd.core.designsystem.components.textfield.OutlinedTextField
 import dev.komrd.core.designsystem.components.topbar.TopBar
 import dev.komrd.core.designsystem.components.topbar.TopBarDefaults
@@ -230,23 +228,20 @@ private fun DropdownField(
     onExpand: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Surface(
+    OutlinedCard(
         onClick = onExpand,
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(8.dp),
-        color = KomrdTheme.colors.transparent,
-        contentColor = KomrdTheme.colors.text,
-        border = BorderStroke(1.dp, KomrdTheme.colors.secondary),
-    ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Text(label, style = KomrdTheme.typography.body1)
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
-        }
-    }
+        content = {
+            Row(
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Text(label, style = KomrdTheme.typography.body1)
+                Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
+            }
+        },
+    )
 }
 
 @Composable
