@@ -19,11 +19,11 @@ KomRDは[Komga](https://komga.org/)向けのAndroidクライアントです。
 
 ## スクリーンショット
 
-| ホーム | ライブラリ |
+| ホーム | サイドバー |
 |---|---|
 | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_home.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_library.jpg" width="240"> |
 
-| 検索 | 設定 |
+| 設定 | 検索 |
 |---|---|
 | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_search.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_settings.jpg" width="240"> |
 
