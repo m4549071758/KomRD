@@ -5,7 +5,7 @@
 KomRD is an Android client for [Komga](https://komga.org/).
 It automatically prefetches upcoming pages and volumes while you read, keeping page turns seamless even on unreliable connections.
 
-> Status: In development (`v0.1.0`)
+> Status: In development (`v0.1.1`)
 
 ## Features
 
@@ -15,6 +15,17 @@ It automatically prefetches upcoming pages and volumes while you read, keeping p
 - Prefetch — automatic read-ahead for a seamless reading experience
 - Read progress sync
 - TOFU TLS pinning (custom CA support)
+- In-app language switching (English / 日本語 / System default)
+
+## Screenshots
+
+| Home | Library |
+|---|---|
+| <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_home.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_library.jpg" width="240"> |
+
+| Search | Settings |
+|---|---|
+| <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_search.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_settings.jpg" width="240"> |
 
 ## Install
 

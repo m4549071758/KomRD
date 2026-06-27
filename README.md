@@ -5,7 +5,7 @@
 KomRDは[Komga](https://komga.org/)向けのAndroidクライアントです。
 読書中に次のページ・次の巻を自動で先読み（Prefetch）し、電波が不安定でもページ送りを途切れさせません。
 
-> ステータス: 開発中（`v0.1.0`）
+> ステータス: 開発中（`v0.1.1`）
 
 ## 主な機能
 
@@ -15,6 +15,17 @@ KomRDは[Komga](https://komga.org/)向けのAndroidクライアントです。
 - Prefetch — 自動先読みによるシームレスな読書体験
 - Read Progress同期
 - TLS信頼のTOFUピン留め（カスタムCA対応）
+- アプリ内言語切り替え（English / 日本語 / システムの既定）
+
+## スクリーンショット
+
+| ホーム | ライブラリ |
+|---|---|
+| <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_home.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_library.jpg" width="240"> |
+
+| 検索 | 設定 |
+|---|---|
+| <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_search.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_settings.jpg" width="240"> |
 
 ## インストール
 
