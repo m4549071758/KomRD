@@ -1,5 +1,6 @@
 package dev.komrd.search
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
@@ -19,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -224,6 +225,31 @@ private fun TabButton(
 }
 
 @Composable
+private fun DropdownField(
+    label: String,
+    onExpand: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        onClick = onExpand,
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        color = KomrdTheme.colors.transparent,
+        contentColor = KomrdTheme.colors.text,
+        border = BorderStroke(1.dp, KomrdTheme.colors.secondary),
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(label, style = KomrdTheme.typography.body1)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
+        }
+    }
+}
+
+@Composable
 private fun LibraryFilterDropdown(
     libraries: List<Library>,
     selectedLibraryId: String?,
@@ -233,12 +259,7 @@ private fun LibraryFilterDropdown(
     val selectedLabel =
         libraries.find { it.id == selectedLibraryId }?.name
             ?: stringResource(R.string.search_filter_all_libraries)
-    Surface(onClick = { expanded = true }, shape = RectangleShape) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(selectedLabel)
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
-        }
-    }
+    DropdownField(label = selectedLabel, onExpand = { expanded = true })
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         DropdownMenuItem(
             text = { Text(stringResource(R.string.search_filter_all_libraries)) },
@@ -266,12 +287,10 @@ private fun ServerSelector(
     onSelect: (String) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
-    Surface(onClick = { expanded = true }, shape = RectangleShape) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(activeServerName ?: stringResource(R.string.search_select_server))
-            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
-        }
-    }
+    DropdownField(
+        label = activeServerName ?: stringResource(R.string.search_select_server),
+        onExpand = { expanded = true },
+    )
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         servers.forEach { server ->
             DropdownMenuItem(
