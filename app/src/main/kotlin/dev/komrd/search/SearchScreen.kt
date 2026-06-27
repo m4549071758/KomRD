@@ -154,7 +154,7 @@ private fun SearchControls(
     }
     if (!state.globalAllServers && state.libraries.isNotEmpty()) {
         Spacer(modifier = Modifier.height(8.dp))
-        LibraryFilterChips(
+        LibraryFilterDropdown(
             libraries = state.libraries,
             selectedLibraryId = state.selectedLibraryId,
             onSelect = onSelectLibrary,
@@ -224,27 +224,39 @@ private fun TabButton(
 }
 
 @Composable
-private fun LibraryFilterChips(
+private fun LibraryFilterDropdown(
     libraries: List<Library>,
     selectedLibraryId: String?,
     onSelect: (String?) -> Unit,
 ) {
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        ChipButton(stringResource(R.string.search_filter_all_libraries), selectedLibraryId == null) { onSelect(null) }
-        libraries.forEach { lib ->
-            ChipButton(lib.name, selectedLibraryId == lib.id) { onSelect(lib.id) }
+    var expanded by remember { mutableStateOf(false) }
+    val selectedLabel =
+        libraries.find { it.id == selectedLibraryId }?.name
+            ?: stringResource(R.string.search_filter_all_libraries)
+    Surface(onClick = { expanded = true }, shape = RectangleShape) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(selectedLabel)
+            Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
         }
     }
-}
-
-@Composable
-private fun ChipButton(
-    label: String,
-    selected: Boolean,
-    onClick: () -> Unit,
-) {
-    val variant = if (selected) ButtonVariant.Primary else ButtonVariant.Ghost
-    Button(text = label, variant = variant, onClick = onClick)
+    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        DropdownMenuItem(
+            text = { Text(stringResource(R.string.search_filter_all_libraries)) },
+            onClick = {
+                expanded = false
+                onSelect(null)
+            },
+        )
+        libraries.forEach { lib ->
+            DropdownMenuItem(
+                text = { Text(lib.name) },
+                onClick = {
+                    expanded = false
+                    onSelect(lib.id)
+                },
+            )
+        }
+    }
 }
 
 @Composable
