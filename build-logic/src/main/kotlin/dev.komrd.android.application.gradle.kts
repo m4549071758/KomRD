@@ -40,6 +40,10 @@ extensions.configure<ApplicationExtension>("android") {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+        }
         release {
             val releaseSigning = signingConfigs.getByName("release")
             val hasReleaseSigning =
