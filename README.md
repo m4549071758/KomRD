@@ -53,7 +53,7 @@ echo "sdk.dir=/path/to/Android/sdk" > local.properties
 
 | 領域 | 採用 |
 |---|---|
-| 言語 / UI | Kotlin / Jetpack Compose (Material 3) |
+| 言語 / UI | Kotlin / Jetpack Compose (Material 3) + [LumoUI](https://github.com/nthieu7393/LumoUI) |
 | アーキ | MVVM + UDF + StateFlow |
 | DI | Hilt |
 | 非同期 | Coroutines + Flow |

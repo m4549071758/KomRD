@@ -53,7 +53,7 @@ Output: `app/build/outputs/apk/debug/app-debug.apk`
 
 | Area | Technology |
 |---|---|
-| Language / UI | Kotlin / Jetpack Compose (Material 3) |
+| Language / UI | Kotlin / Jetpack Compose (Material 3) + [LumoUI](https://github.com/nthieu7393/LumoUI) |
 | Architecture | MVVM + UDF + StateFlow |
 | DI | Hilt |
 | Async | Coroutines + Flow |
