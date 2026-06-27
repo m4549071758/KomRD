@@ -19,11 +19,11 @@ It automatically prefetches upcoming pages and volumes while you read, keeping p
 
 ## Screenshots
 
-| Home | Library |
+| Home | Sidebar |
 |---|---|
 | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_home.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_library.jpg" width="240"> |
 
-| Search | Settings |
+| Settings | Search |
 |---|---|
 | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_search.jpg" width="240"> | <img src="https://github.com/m4549071758/KomRD/releases/download/v0.1.1/screenshot_settings.jpg" width="240"> |
 
