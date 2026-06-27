@@ -2,7 +2,6 @@
 
 package dev.komrd.feature.library
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,17 +27,15 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import coil3.ImageLoader
 import dev.komrd.core.designsystem.KomrdTheme
-import dev.komrd.core.designsystem.components.AlertDialog
 import dev.komrd.core.designsystem.components.Button
 import dev.komrd.core.designsystem.components.ButtonVariant
 import dev.komrd.core.designsystem.components.DrawerValue
+import dev.komrd.core.designsystem.components.DropdownMenu
+import dev.komrd.core.designsystem.components.DropdownMenuItem
 import dev.komrd.core.designsystem.components.Icon
 import dev.komrd.core.designsystem.components.IconButton
-import dev.komrd.core.designsystem.components.ListItem
-import dev.komrd.core.designsystem.components.ListItemPadding
 import dev.komrd.core.designsystem.components.ModalDrawerSheet
 import dev.komrd.core.designsystem.components.ModalNavigationDrawer
-import dev.komrd.core.designsystem.components.RadioButton
 import dev.komrd.core.designsystem.components.Scaffold
 import dev.komrd.core.designsystem.components.Text
 import dev.komrd.core.designsystem.components.progressindicators.CircularProgressIndicator
@@ -70,8 +67,6 @@ fun LibraryScreen(
 ) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    var showSortDialog by remember { mutableStateOf(false) }
-    var showFilterDialog by remember { mutableStateOf(false) }
     ModalNavigationDrawer(
         drawerState = drawerState,
         modifier = modifier,
@@ -97,26 +92,10 @@ fun LibraryScreen(
             onAddServer = onAddServer,
             onOpenSeries = onOpenSeries,
             onMenuClick = { scope.launch { drawerState.open() } },
-            onSortClick = { showSortDialog = true },
-            onFilterClick = { showFilterDialog = true },
+            onSortChanged = onSortChanged,
+            onFilterChanged = onFilterChanged,
         )
     }
-    LibraryDialogs(
-        showSortDialog = showSortDialog,
-        showFilterDialog = showFilterDialog,
-        currentSort = state.currentSort,
-        currentFilter = state.readStatusFilter,
-        onSortSelect = {
-            onSortChanged(it)
-            showSortDialog = false
-        },
-        onFilterSelect = {
-            onFilterChanged(it)
-            showFilterDialog = false
-        },
-        onSortDismiss = { showSortDialog = false },
-        onFilterDismiss = { showFilterDialog = false },
-    )
 }
 
 @Composable
@@ -154,26 +133,6 @@ private fun libraryDrawer(
 
 @Composable
 @Suppress("LongParameterList")
-private fun LibraryDialogs(
-    showSortDialog: Boolean,
-    showFilterDialog: Boolean,
-    currentSort: SeriesSort,
-    currentFilter: ReadStatusFilter,
-    onSortSelect: (SeriesSort) -> Unit,
-    onFilterSelect: (ReadStatusFilter) -> Unit,
-    onSortDismiss: () -> Unit,
-    onFilterDismiss: () -> Unit,
-) {
-    if (showSortDialog) {
-        SortSelectionDialog(current = currentSort, onDismiss = onSortDismiss, onSelect = onSortSelect)
-    }
-    if (showFilterDialog) {
-        FilterSelectionDialog(current = currentFilter, onDismiss = onFilterDismiss, onSelect = onFilterSelect)
-    }
-}
-
-@Composable
-@Suppress("LongParameterList")
 private fun LibraryScaffoldContent(
     state: LibraryUiState,
     series: LazyPagingItems<Series>,
@@ -182,11 +141,18 @@ private fun LibraryScaffoldContent(
     onAddServer: () -> Unit,
     onOpenSeries: (Series) -> Unit,
     onMenuClick: () -> Unit,
-    onSortClick: () -> Unit,
-    onFilterClick: () -> Unit,
+    onSortChanged: (SeriesSort) -> Unit,
+    onFilterChanged: (ReadStatusFilter) -> Unit,
 ) {
     Scaffold(
-        topBar = { LibraryTopBar(state, onMenuClick, onSortClick, onFilterClick) },
+        topBar = {
+            LibraryTopBar(
+                state = state,
+                onMenuClick = onMenuClick,
+                onSortChanged = onSortChanged,
+                onFilterChanged = onFilterChanged,
+            )
+        },
     ) { padding ->
         LibraryBody(
             state = state,
@@ -205,8 +171,8 @@ private fun LibraryScaffoldContent(
 private fun LibraryTopBar(
     state: LibraryUiState,
     onMenuClick: () -> Unit,
-    onSortClick: () -> Unit,
-    onFilterClick: () -> Unit,
+    onSortChanged: (SeriesSort) -> Unit,
+    onFilterChanged: (ReadStatusFilter) -> Unit,
 ) {
     TopBar {
         Row(
@@ -228,18 +194,14 @@ private fun LibraryTopBar(
                 style = KomrdTheme.typography.h3,
                 modifier = Modifier.weight(1f),
             )
-            IconButton(onClick = onSortClick) {
-                Text(
-                    stringResource(R.string.library_sort_button),
-                    style = KomrdTheme.typography.label2,
-                )
-            }
-            IconButton(onClick = onFilterClick) {
-                Text(
-                    stringResource(R.string.library_filter_button),
-                    style = KomrdTheme.typography.label2,
-                )
-            }
+            SortDropdown(
+                current = state.currentSort,
+                onSelect = onSortChanged,
+            )
+            FilterDropdown(
+                current = state.readStatusFilter,
+                onSelect = onFilterChanged,
+            )
         }
     }
 }
@@ -286,68 +248,69 @@ private fun LibraryBody(
 }
 
 @Composable
-private fun SortSelectionDialog(
+private fun SortDropdown(
     current: SeriesSort,
-    onDismiss: () -> Unit,
     onSelect: (SeriesSort) -> Unit,
 ) {
-    SelectionDialog(
-        title = stringResource(R.string.library_sort_dialog_title),
-        options = SeriesSort.entries.toList(),
-        current = current,
-        labelOf = { seriesSortLabel(it) },
-        onDismiss = onDismiss,
-        onSelect = onSelect,
-    )
+    Box {
+        var expanded by remember { mutableStateOf(false) }
+        IconButton(onClick = { expanded = true }) {
+            Text(
+                stringResource(R.string.library_sort_button),
+                style = KomrdTheme.typography.label2,
+            )
+        }
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            SeriesSort.entries.forEach { sort ->
+                DropdownMenuItem(
+                    text = {
+                        Text(
+                            seriesSortLabel(sort),
+                            style = KomrdTheme.typography.body2,
+                            color = if (sort == current) KomrdTheme.colors.primary else KomrdTheme.colors.onSurface,
+                        )
+                    },
+                    onClick = {
+                        onSelect(sort)
+                        expanded = false
+                    },
+                )
+            }
+        }
+    }
 }
 
 @Composable
-private fun FilterSelectionDialog(
+private fun FilterDropdown(
     current: ReadStatusFilter,
-    onDismiss: () -> Unit,
     onSelect: (ReadStatusFilter) -> Unit,
 ) {
-    SelectionDialog(
-        title = stringResource(R.string.library_filter_dialog_title),
-        options = ReadStatusFilter.entries.toList(),
-        current = current,
-        labelOf = { readStatusFilterLabel(it) },
-        onDismiss = onDismiss,
-        onSelect = onSelect,
-    )
-}
-
-@Composable
-private fun <T> SelectionDialog(
-    title: String,
-    options: List<T>,
-    current: T,
-    labelOf: @Composable (T) -> String,
-    onDismiss: () -> Unit,
-    onSelect: (T) -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(title) },
-        text = {
-            Column {
-                options.forEach { option ->
-                    ListItem(
-                        headlineContent = { Text(labelOf(option)) },
-                        leadingContent = {
-                            RadioButton(
-                                selected = option == current,
-                                onClick = null,
-                            )
-                        },
-                        modifier = Modifier.clickable { onSelect(option) },
-                        contentPadding = ListItemPadding(horizontal = 0.dp, vertical = 4.dp),
-                    )
-                }
+    Box {
+        var expanded by remember { mutableStateOf(false) }
+        IconButton(onClick = { expanded = true }) {
+            Text(
+                stringResource(R.string.library_filter_button),
+                style = KomrdTheme.typography.label2,
+            )
+        }
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ReadStatusFilter.entries.forEach { filter ->
+                DropdownMenuItem(
+                    text = {
+                        Text(
+                            readStatusFilterLabel(filter),
+                            style = KomrdTheme.typography.body2,
+                            color = if (filter == current) KomrdTheme.colors.primary else KomrdTheme.colors.onSurface,
+                        )
+                    },
+                    onClick = {
+                        onSelect(filter)
+                        expanded = false
+                    },
+                )
             }
-        },
-        confirmButton = {},
-    )
+        }
+    }
 }
 
 @Composable
