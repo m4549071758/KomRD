@@ -28,14 +28,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.util.VelocityTracker
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import dev.komrd.core.designsystem.KomrdTheme
-import dev.komrd.core.designsystem.contentColorFor
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.roundToInt
@@ -272,8 +270,9 @@ fun ModalDrawerSheet(
 ) {
     Surface(
         modifier = modifier.fillMaxHeight().width(DrawerWidth),
-        color = KomrdTheme.colors.surface,
-        contentColor = contentColorFor(KomrdTheme.colors.surface),
+        color = KomrdTheme.colors.background,
+        contentColor = KomrdTheme.colors.onBackground,
+        shadowElevation = 16.dp,
     ) {
         Column(modifier = Modifier.fillMaxWidth(), content = content)
     }
@@ -290,13 +289,13 @@ fun NavigationDrawerItem(
     badge: @Composable (() -> Unit)? = null,
 ) {
     val colors = KomrdTheme.colors
-    val containerColor = if (selected) colors.secondary.copy(alpha = 0.3f) else Color.Transparent
+    val containerColor = if (selected) colors.primary.copy(alpha = 0.12f) else colors.background
     Surface(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
         color = containerColor,
-        contentColor = if (selected) colors.primary else contentColorFor(colors.surface),
+        contentColor = if (selected) colors.primary else colors.onBackground,
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
