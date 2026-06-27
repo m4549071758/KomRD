@@ -110,7 +110,7 @@ private fun ThumbnailCard(
     imageLoader: ImageLoader,
     onClick: () -> Unit,
 ) {
-    Column(modifier = Modifier.clickable(onClick = onClick)) {
+    Column(modifier = Modifier.clickable(onClick = onClick).fillMaxWidth()) {
         Surface(
             shape = RoundedCornerShape(12.dp),
             shadowElevation = 4.dp,
